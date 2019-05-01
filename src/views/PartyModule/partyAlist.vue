@@ -10,7 +10,7 @@
         <a-breadcrumb-item>{{$route.query.data.childrenName}}</a-breadcrumb-item>
       </a-breadcrumb>
     </div>
-    <h1>This is an about pa1111111111ge</h1>
+    <h1>This is an about 111111111ge</h1>
   </div>
 </template>
 <script lang="ts">
