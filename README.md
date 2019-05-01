@@ -1,11 +1,11 @@
 # blog-admin
 
-## Project setup
+## 安装依赖
 ```
 yarn install
 ```
 
-### Compiles and hot-reloads for development
+### 启动本地服务
 ```
 yarn run serve
 ```
@@ -15,15 +15,3 @@ yarn run serve
 yarn run build
 ```
 
-### Run your tests
-```
-yarn run test
-```
-
-### Lints and fixes files
-```
-yarn run lint
-```
-
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
