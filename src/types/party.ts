@@ -10,11 +10,23 @@ export interface PartyItem {
   remake: number;
 }
 
+export interface CityItem {
+  value: string,
+  lable: string,
+  children: Array<object>
+}
+
 export interface PartyData {
   data: PartyItem[];
   success: boolean;
 }
 
+export interface CityData {
+  data: CityItem[];
+  success: boolean;
+}
+
 export interface State {
   data: PartyItem[] | never[];
+  city: CityItem[] | never[];
 }

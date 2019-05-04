@@ -21,10 +21,6 @@
             placeholder="星级"
             optionFilterProp="children"
             style="width:120px"
-            @focus="handleFocus"
-            @blur="handleBlur"
-            @change="handleChange"
-            :filterOption="filterOption"
           >
             <a-select-option value="★">★</a-select-option>
             <a-select-option value="★★">★★</a-select-option>
@@ -39,10 +35,6 @@
             placeholder="性别"
             optionFilterProp="children"
             style="width:80px"
-            @focus="handleFocus"
-            @blur="handleBlur"
-            @change="handleChange"
-            :filterOption="filterOption"
           >
             <a-select-option value="男">男</a-select-option>
             <a-select-option value="女">女</a-select-option>
@@ -50,7 +42,6 @@
         </a-col>
         <a-col>
           <a-range-picker 
-            @change="onChange"
           />
         </a-col>
         <a-col>
@@ -60,53 +51,69 @@
     </div>
     <div class="table-lyout">
       <a-table
+        size="small"
         :columns="tableSesttings.columns"
         :bordered="tableSesttings.bordered"
         :dataSource="data.data.result"
-      />
+      >
+      </a-table>
     </div>
   </div>
 </template>
 <script lang="ts">
 import { Component, Prop, Vue } from "vue-property-decorator";
 import { State, Action, namespace } from "vuex-class";
-import { PartyItem } from "../../types/party";
-const Party = namespace("Party");
+import { CommodityItem } from "../../types/commodity";
+const Commodity = namespace("Commodity");
 @Component
-export default class PartyBComponent extends Vue {
+export default class CommodityListComponent extends Vue {
   tableSesttings: object = {
     bordered: true,
     columns: [
       {
-        title: "姓名",
+        title: "商品名称",
         dataIndex: "name",
-        width: 180
       },
       {
-        title: "性别",
-        dataIndex: "gender",
+        title: "种类",
+        dataIndex: "type",
         width: 80,
         align: "center"
       },
 
       {
-        title: "录入时间",
-        dataIndex: "importTime",
+        title: "价格",
+        dataIndex: "money",
+        width: 80,
+        align: "left"
+      },
+      {
+        title: "库存数量",
+        dataIndex: "lasdCount",
+        width: 90,
+        align: "left"
+      },
+      {
+        title: "已售数量",
+        dataIndex: "soldCount",
+        align: "left",
+        width: 90
+      },
+      {
+        title: "状态",
+        width: 80,
+        dataIndex: "status",
+        scopedSlots: { customRender: 'status' }
+      },
+      {
+        title: "上架人员",
         width: 120,
-        align: "center"
+        dataIndex: "pushName"
       },
       {
-        title: "email",
-        dataIndex: "email"
-      },
-      {
-        title: "地址",
-        dataIndex: "address",
-        width: 310
-      },
-      {
-        title: "星级",
-        dataIndex: "grade"
+        title: "审批人员",
+        width: 120,
+        dataIndex: "ApprovalName"
       }
     ]
   };
@@ -114,16 +121,13 @@ export default class PartyBComponent extends Vue {
     inlineIndent: 10,
     defaultSelectedKeys: [2]
   };
-  dataPickerSetting:object={
-    placeholder:['开始时间','结束时间']
-  }
-  @Party.State("data") private data!: PartyItem[];
-  @Party.Action("getParty") private getParty!: () => void;
+  @Commodity.State("data") private data!: CommodityItem[];
+  @Commodity.Action("getCommodity") private getCommodityList!: () => void;
   constructor() {
     super();
   }
   mounted() {
-    this.getParty();
+    this.getCommodityList();
   }
 }
 </script>

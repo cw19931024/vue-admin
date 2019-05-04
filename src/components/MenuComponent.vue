@@ -26,7 +26,7 @@ import { Menu } from "ant-design-vue";
 export default class MenuComponent extends Vue {
   menuSetting:object={
     inlineIndent:10,
-    defaultSelectedKeys:[2]
+    defaultSelectedKeys:[1]
   }
   openKeys: any = ['menu1'];
   menuList: any = [
@@ -38,7 +38,7 @@ export default class MenuComponent extends Vue {
       children: [
         { childrenName: "甲方客户", url: "/party-a", key: 1 },
         { childrenName: "乙方客户", url: "/party-b", key: 2 },
-        { childrenName: "合作客户", url: "", key: 3 }
+        { childrenName: "录入客户", url: "/party/add", key: 3 }
       ]
     },
     {
@@ -46,9 +46,10 @@ export default class MenuComponent extends Vue {
       icontype: "shop",
       title: "商品管理",
       children: [
-        { childrenName: "以上架管理", url: "", key: 4 },
+        { childrenName: "以上架管理", url: "/commodity/list/scuess", key: 4 },
         { childrenName: "未上架管理", url: "", key: 5 },
-        { childrenName: "审核管理", url: "", key: 6 }
+        { childrenName: "审核管理", url: "", key: 6 },
+        { childrenName: "录入商品", url: "/commodity/add", key: 7 },
       ]
     },
     {

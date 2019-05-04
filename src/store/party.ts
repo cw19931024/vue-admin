@@ -1,22 +1,30 @@
 import { ActionTree, MutationTree } from 'vuex';
-import { PartyItem, PartyData, State } from '../types/party';
+import { PartyItem, CityItem, State } from '../types/party';
 import { getData } from '../api/api';
-import axios from 'axios';
 const state: State = {
-  data: []
+  data: [],
+  city: []
 };
 
 const actions: ActionTree<State, any> = {
   async getParty({ commit }): Promise<void> {
     commit('getData');
-    const res = await getData(' https://www.easy-mock.com/mock/590493587a878d73716e22e5/example/partyList');
+    const res = await getData('/example/partyList');
     commit('getPartySuccess', res.data);
+  },
+  async getCity({ commit }): Promise<void> {
+    commit('getData');
+    const res = await getData('/example/citylist');
+    commit('getCitySucces', res.data)
   }
 };
 
 const mutations: MutationTree<State> = {
   getPartySuccess(state: State, res: PartyItem[]): void {
     state.data = res;
+  },
+  getCitySucces(state: State, res: CityItem[]): void {
+    state.city = res;
   }
 };
 
